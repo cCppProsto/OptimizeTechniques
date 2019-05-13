@@ -14,4 +14,7 @@ SUBDIRS += \
     list_of_initialization \
     loop_collapsing \
     loop_fusion \
-    loop_unrolling
+    loop_unrolling \
+    tail_recursion \
+    unswitching \
+    volatile
