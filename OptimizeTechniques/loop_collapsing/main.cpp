@@ -12,7 +12,10 @@ static void loop(benchmark::State& state)
   {
     for (int i = 0; i < 3000; i++)
       for (int j = 0; j < 1000; j++)
-        a[j][i] = 0;
+      {
+        if(a[j][i] == 1 || a[j][i] >= 100)
+          a[j][i] = 0;
+      }
   }
 }
 BENCHMARK(loop);
@@ -26,7 +29,10 @@ static void loop_colapsing(benchmark::State& state)
     int *p = &a[0][0];
 
     for (int i = 0; i < 300000; i++)
-      *p++ = 0;
+    {
+      if(*p == 1 || *p >= 100 )
+        *p++ = 0;
+    }
   }
 }
 BENCHMARK(loop_colapsing);
