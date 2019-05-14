@@ -17,4 +17,5 @@ SUBDIRS += \
     loop_unrolling \
     tail_recursion \
     unswitching \
-    volatile
+    volatile \
+    inline
