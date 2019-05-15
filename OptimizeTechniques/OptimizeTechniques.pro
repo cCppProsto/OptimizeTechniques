@@ -18,4 +18,20 @@ SUBDIRS += \
     tail_recursion \
     unswitching \
     volatile \
-    inline
+    inline \
+    template_recursion
+
+
+#+  loop_1
+#+  swap_vs_my_swap
+#  pass_by_val_ref_pointer
+#  postpone_declaration
+#+  init_and_assignment
+#+  list_of_initialization
+#+  loop_collapsing
+#+  loop_fusion
+#+  loop_unrolling
+#  tail_recursion
+#  unswitching
+#  volatile
+#  inline
