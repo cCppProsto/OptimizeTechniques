@@ -19,7 +19,9 @@ SUBDIRS += \
     unswitching \
     volatile \
     inline \
-    template_recursion
+    template_recursion \
+    cache_1 \
+    pointer_chains
 
 
 #+  loop_1
