@@ -20,8 +20,7 @@ SUBDIRS += \
     volatile \
     inline \
     template_recursion \
-    cache_1 \
-    pointer_chains
+    cache_1
 
 
 #+  loop_1
