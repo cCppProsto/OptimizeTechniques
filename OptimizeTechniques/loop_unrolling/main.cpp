@@ -5,9 +5,11 @@
 #include <benchmark/benchmark.h>
 
 
-void g()
+int g(int i)
 {
-
+  if(i % 2)
+    return 1;
+  return 0;
 }
 
 //------------------------------------------------------------------------------
@@ -16,7 +18,7 @@ static void loop_not_unrolling(benchmark::State& state)
   for (auto _ : state)
   {
     for (int i = 0; i < 100000; i++)
-      g ();
+      g (i);
   }
 }
 BENCHMARK(loop_not_unrolling);
@@ -28,8 +30,8 @@ static void loop_unrolling(benchmark::State& state)
   {
     for (int i = 0; i < 100000; i += 2)
     {
-      g ();
-      g ();
+      g (i);
+      g (i+1);
     }
   }
 }
