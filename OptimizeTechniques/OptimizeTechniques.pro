@@ -6,6 +6,8 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     loop_1 \
+    loop_index_float \
+    struct_pragma \
     swap_vs_my_swap \
     pass_by_val_ref_pointer \
     postpone_declaration \
