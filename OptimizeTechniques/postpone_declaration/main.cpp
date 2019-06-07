@@ -6,6 +6,20 @@
 
 static bool flag{true};
 
+int res{0};
+
+int get_int()
+{
+  switch (res)
+  {
+    case 0: return 1;
+    case 10: return 121;
+    case 210: return 12323;
+    case 12210: return 134;
+  }
+  return 90;
+}
+
 //------------------------------------------------------------------------------
 static void not_postpone_int(benchmark::State& state)
 {
@@ -14,8 +28,9 @@ static void not_postpone_int(benchmark::State& state)
     int i{0};
     if(flag)
     {
-      i = std::rand()%10000;
+      i = get_int();
       flag = !flag;
+      res += i;
     }
   }
 }
@@ -28,8 +43,9 @@ static void postpone_int(benchmark::State& state)
   {
     if(flag)
     {
-      int i{std::rand()%10000};
+      int i{get_int()};
       flag = !flag;
+      res += i;
     }
   }
 }
@@ -45,6 +61,7 @@ static void not_postpone_string(benchmark::State& state)
     {
       i = "std::rand()%10000";
       flag = !flag;
+      res += i.size();
     }
   }
 }
@@ -59,6 +76,7 @@ static void postpone_string(benchmark::State& state)
     {
       std::string i{"std::rand()%10000"};
       flag = !flag;
+      res += i.size();
     }
   }
 }

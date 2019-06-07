@@ -1,6 +1,8 @@
 #include <iostream>
 #include <benchmark/benchmark.h>
 
+//#define DEBUG_TEST
+
 enum class eType : uint8_t
 {
   Type_1,

@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <benchmark/benchmark.h>
 
-const int size = 100000;
+const int size = 10000;
 int a[size];
 int b[size];
 volatile int x, y;
@@ -23,18 +23,19 @@ void f_b ()
 }
 
 //------------------------------------------------------------------------------
-static void switching(benchmark::State& state)
+static void not_optimize(benchmark::State& state)
 {
-  bool b;
   for (auto _ : state)
   {
     f_a();
   }
 }
-BENCHMARK(switching);
+BENCHMARK(not_optimize);
+BENCHMARK(not_optimize);
+BENCHMARK(not_optimize);
 
 //------------------------------------------------------------------------------
-static void unswitching(benchmark::State& state)
+static void optimize(benchmark::State& state)
 {
   bool b;
   for (auto _ : state)
@@ -42,6 +43,8 @@ static void unswitching(benchmark::State& state)
     f_b();
   }
 }
-BENCHMARK(unswitching);
+BENCHMARK(optimize);
+BENCHMARK(optimize);
+BENCHMARK(optimize);
 
 BENCHMARK_MAIN();

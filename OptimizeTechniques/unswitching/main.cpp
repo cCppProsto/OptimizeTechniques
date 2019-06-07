@@ -4,49 +4,56 @@
 #include <algorithm>
 #include <benchmark/benchmark.h>
 
-const int size = 100000;
+const int size = 10000;
 int a[size];
 int b[size];
+bool gBool{false};
+
+size_t sum{0};
 
 void f_a (int i, bool x)
 {
   for (i = 0; i < size; i++)
     if (x)
-      a[i] = 0;
+      sum += a[i];
     else
-      b[i] = 0;
+      sum += b[i];
 }
 
 void f_b (int i, bool x)
 {
   if (x)
     for (i = 0; i < size; i++)
-      a[i] = 0;
+      sum += a[i];
   else
     for (i = 0; i < size; i++)
-      b[i] = 0;
+      sum += b[i];
 }
 
 //------------------------------------------------------------------------------
 static void switching(benchmark::State& state)
 {
-  bool b;
   for (auto _ : state)
   {
-    f_a(1000, b);
+    f_a(1000, gBool);
+    gBool = !gBool;
   }
 }
+BENCHMARK(switching);
+BENCHMARK(switching);
 BENCHMARK(switching);
 
 //------------------------------------------------------------------------------
 static void unswitching(benchmark::State& state)
 {
-  bool b;
   for (auto _ : state)
   {
-    f_b(1000, b);
+    f_b(1000, gBool);
+    gBool = !gBool;
   }
 }
+BENCHMARK(unswitching);
+BENCHMARK(unswitching);
 BENCHMARK(unswitching);
 
 BENCHMARK_MAIN();

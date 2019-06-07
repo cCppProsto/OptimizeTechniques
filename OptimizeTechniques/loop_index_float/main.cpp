@@ -4,9 +4,9 @@
 #include <algorithm>
 #include <benchmark/benchmark.h>
 
-static volatile int gSomeValue{0};
-static double gVal_1{0};
-static double gVal_2{0};
+int gSomeValue{0};
+double gVal_1{0};
+double gVal_2{0};
 
 //------------------------------------------------------------------------------
 static void loop_float_index(benchmark::State& state)

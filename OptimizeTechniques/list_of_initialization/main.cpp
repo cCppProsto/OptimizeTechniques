@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <benchmark/benchmark.h>
 
+int res{0};
+
 class bad
 {
 public:
@@ -13,6 +15,10 @@ public:
     m_str = aStr;
   }
 
+  int i()
+  {
+    return m_int;
+  }
 private:
   int m_int;
   std::string m_str;
@@ -26,6 +32,10 @@ public:
     ,m_str{aStr}
   {
   }
+  int i()
+  {
+    return m_int;
+  }
 
 private:
   int m_int;
@@ -37,9 +47,15 @@ static void init_list_not_used(benchmark::State& state)
 {
   for (auto _ : state)
   {
-    bad b(1, "Hello" );
+    for (int i = 0; i < 10000; i++)
+    {
+      bad b(1, "Hello" );
+      res += b.i();
+    }
   }
 }
+BENCHMARK(init_list_not_used);
+BENCHMARK(init_list_not_used);
 BENCHMARK(init_list_not_used);
 
 //------------------------------------------------------------------------------
@@ -47,9 +63,15 @@ static void init_list_used(benchmark::State& state)
 {
   for (auto _ : state)
   {
-    good b(1, "Hello" );
+    for (int i = 0; i < 10000; i++)
+    {
+      good g(1, "Hello" );
+      res += g.i();
+    }
   }
 }
+BENCHMARK(init_list_used);
+BENCHMARK(init_list_used);
 BENCHMARK(init_list_used);
 
 BENCHMARK_MAIN();

@@ -4,17 +4,27 @@
 #include <algorithm>
 #include <benchmark/benchmark.h>
 
-void g(int i)
+int res{0};
+
+int g(int i)
 {
+  switch (i)
+  {
+    case 0: return 1;
+    case 10: return 121;
+    case 210: return 12323;
+    case 12210: return 134;
+  }
+  return 90;
 }
 
 int f_a (int i)
 {
   if (i > 0)
-    {
-      g (i);
-      return f_a (i - 1);
-    }
+  {
+    res += g (i);
+    return f_a (i - 1);
+  }
   else
     return 0;
 }
@@ -23,11 +33,11 @@ int f_b (int i)
 {
  entry:
   if (i > 0)
-    {
-      g (i);
-      i--;
-      goto entry;
-    }
+  {
+    res += g (i);
+    i--;
+    goto entry;
+  }
   else
     return 0;
 }
@@ -41,6 +51,8 @@ static void recursion(benchmark::State& state)
   }
 }
 BENCHMARK(recursion);
+BENCHMARK(recursion);
+BENCHMARK(recursion);
 
 //------------------------------------------------------------------------------
 static void tail_recursion(benchmark::State& state)
@@ -50,6 +62,8 @@ static void tail_recursion(benchmark::State& state)
     f_b(1000);
   }
 }
+BENCHMARK(tail_recursion);
+BENCHMARK(tail_recursion);
 BENCHMARK(tail_recursion);
 
 BENCHMARK_MAIN();

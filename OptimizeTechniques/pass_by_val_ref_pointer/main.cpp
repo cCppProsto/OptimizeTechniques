@@ -4,9 +4,13 @@
 #include <algorithm>
 #include <benchmark/benchmark.h>
 
-template <class T> void ByValue(T t) { }
-template <class T> void ByReference(const T& t) { }
-template <class T> void ByPointer(const T* t) { }
+template <class T> T ByValue(T t) { return t;}
+template <class T> T ByReference(const T& t) { return t;}
+template <class T> T ByPointer(const T* t) { return *t;}
+
+int gi;
+std::vector<int> vi;
+std::string gs;
 
 //------------------------------------------------------------------------------
 static void pass_int_by_value(benchmark::State& state)
@@ -14,7 +18,7 @@ static void pass_int_by_value(benchmark::State& state)
   for (auto _ : state)
   {
     int i{0};
-    ByValue(i);
+    gi = ByValue(i);
   }
 }
 BENCHMARK(pass_int_by_value);
@@ -25,7 +29,7 @@ static void pass_int_by_reference(benchmark::State& state)
   for (auto _ : state)
   {
     int i{0};
-    ByReference(i);
+    gi = ByReference(i);
   }
 }
 BENCHMARK(pass_int_by_reference);
@@ -37,7 +41,7 @@ static void pass_int_by_pointer(benchmark::State& state)
   for (auto _ : state)
   {
     int i{0};
-    ByPointer(&i);
+    gi = ByPointer(&i);
   }
 }
 BENCHMARK(pass_int_by_pointer);
@@ -48,7 +52,7 @@ static void pass_string_by_value(benchmark::State& state)
   for (auto _ : state)
   {
     std::string str{"Hello"};
-    ByValue(str);
+    gs = ByValue(str);
   }
 }
 BENCHMARK(pass_string_by_value);
@@ -59,7 +63,7 @@ static void pass_string_by_reference(benchmark::State& state)
   for (auto _ : state)
   {
     std::string str{"Hello"};
-    ByReference(str);
+    gs = ByReference(str);
   }
 }
 BENCHMARK(pass_string_by_reference);
@@ -71,7 +75,7 @@ static void pass_string_by_pointer(benchmark::State& state)
   for (auto _ : state)
   {
     std::string str{"Hello"};
-    ByPointer(&str);
+    gs = ByPointer(&str);
   }
 }
 BENCHMARK(pass_string_by_pointer);
@@ -84,7 +88,7 @@ static void pass_vector_by_value(benchmark::State& state)
   {
     std::vector<int> data;
     data.resize(10000);
-    ByValue(data);
+    vi = ByValue(data);
   }
 }
 BENCHMARK(pass_vector_by_value);
@@ -96,7 +100,7 @@ static void pass_vector_by_reference(benchmark::State& state)
   {
     std::vector<int> data;
     data.resize(10000);
-    ByReference(data);
+    vi = ByReference(data);
   }
 }
 BENCHMARK(pass_vector_by_reference);
@@ -109,7 +113,7 @@ static void pass_vector_by_pointer(benchmark::State& state)
   {
     std::vector<int> data;
     data.resize(10000);
-    ByPointer(&data);
+    vi = ByPointer(&data);
   }
 }
 BENCHMARK(pass_vector_by_pointer);

@@ -4,39 +4,49 @@
 #include <algorithm>
 #include <benchmark/benchmark.h>
 
+static constexpr size_t arr_size_1{3000};
+static constexpr size_t arr_size_2{1500};
+
+static size_t sum_1{0};
+static size_t sum_2{0};
+
 //------------------------------------------------------------------------------
 static void loop_not_fusion(benchmark::State& state)
 {
-  int a[3000];
-  int b[1500];
+  int a[arr_size_1];
+  int b[arr_size_2];
   for (auto _ : state)
   {
-    for (int i = 0; i < 3000; i++)
-      a[i] = a[i] + 3;
+    for (size_t i = 0; i < arr_size_1; i++)
+      sum_1 += a[i];
 
     // ...
 
-    for (int i = 0; i < 1500; i++)
-      b[i] = b[i] + 4;
+    for (size_t i = 0; i < arr_size_2; i++)
+      sum_1 += b[i];
   }
 }
+BENCHMARK(loop_not_fusion);
+BENCHMARK(loop_not_fusion);
 BENCHMARK(loop_not_fusion);
 
 //------------------------------------------------------------------------------
 static void loop_fusion(benchmark::State& state)
 {
-  int a[3000];
-  int b[1500];
+  int a[arr_size_1];
+  int b[arr_size_2];
   for (auto _ : state)
   {
-    for (int i = 0; i < 3000; i++)
+    for (size_t i = 0; i < arr_size_1; i++)
     {
-      a[i] = a[i] + 3;
-      if(i < 1500)
-        b[i] = b[i] + 4;
+      sum_2 += a[i];
+      if(i < arr_size_2)
+        sum_2 += b[i];
     }
   }
 }
+BENCHMARK(loop_fusion);
+BENCHMARK(loop_fusion);
 BENCHMARK(loop_fusion);
 
 BENCHMARK_MAIN();
