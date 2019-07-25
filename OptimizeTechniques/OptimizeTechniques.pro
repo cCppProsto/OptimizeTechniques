@@ -77,4 +77,4 @@ SUBDIRS += \
 
 
 
-#? loop_index_float \
+#gcc -c -Q -march=native --help=target
