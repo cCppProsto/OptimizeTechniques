@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cppprosto/dev/cCppProsto/OptimizeTechniques/OptimizeTechniques/template_recursion/main.cpp
+set
+-
+map
+-
+vector
+-
+algorithm
+-
+benchmark/benchmark.h
+-
+

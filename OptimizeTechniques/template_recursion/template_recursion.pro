@@ -23,3 +23,8 @@ QMAKE_CXXFLAGS += -O3
 LIBS += -lbenchmark
 
 LIBS += -lpthread -ldl
+
+DISTFILES += \
+  different_compilers/bin_clang/CMakeLists.txt \
+  different_compilers/bin_gcc/CMakeLists.txt \
+  different_compilers/bin_icc/CMakeLists.txt

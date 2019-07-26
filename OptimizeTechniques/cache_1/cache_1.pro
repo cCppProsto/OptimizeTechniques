@@ -14,5 +14,9 @@ QMAKE_CXXFLAGS += -O3
 
 # https://github.com/google/benchmark
 LIBS += -lbenchmark
-
 LIBS += -lpthread -ldl
+
+DISTFILES += \
+  different_compilers/bin_clang/CMakeLists.txt \
+  different_compilers/bin_gcc/CMakeLists.txt \
+  different_compilers/bin_icc/CMakeLists.txt

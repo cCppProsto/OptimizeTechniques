@@ -38,6 +38,8 @@ static void loop_float_index(benchmark::State& state)
   }
 }
 BENCHMARK(loop_float_index);
+BENCHMARK(loop_float_index);
+BENCHMARK(loop_float_index);
 
 //------------------------------------------------------------------------------
 static void loop_double_index(benchmark::State& state)
@@ -69,6 +71,8 @@ static void loop_double_index(benchmark::State& state)
   }
 }
 BENCHMARK(loop_double_index);
+BENCHMARK(loop_double_index);
+BENCHMARK(loop_double_index);
 
 //------------------------------------------------------------------------------
 static void loop_int_index(benchmark::State& state)
@@ -99,6 +103,8 @@ static void loop_int_index(benchmark::State& state)
     }
   }
 }
+BENCHMARK(loop_int_index);
+BENCHMARK(loop_int_index);
 BENCHMARK(loop_int_index);
 
 

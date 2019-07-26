@@ -130,6 +130,8 @@ static void struct_not_optimised(benchmark::State& state)
   }
 }
 BENCHMARK(struct_not_optimised);
+BENCHMARK(struct_not_optimised);
+BENCHMARK(struct_not_optimised);
 
 //------------------------------------------------------------------------------
 static void struct_optimised(benchmark::State& state)
@@ -197,6 +199,8 @@ static void struct_optimised(benchmark::State& state)
     }
   }
 }
+BENCHMARK(struct_optimised);
+BENCHMARK(struct_optimised);
 BENCHMARK(struct_optimised);
 
 
@@ -268,6 +272,8 @@ static void struct_not_optimised_pragma(benchmark::State& state)
   }
 }
 BENCHMARK(struct_not_optimised_pragma);
+BENCHMARK(struct_not_optimised_pragma);
+BENCHMARK(struct_not_optimised_pragma);
 
 //------------------------------------------------------------------------------
 static void struct_optimised_pragma(benchmark::State& state)
@@ -335,6 +341,8 @@ static void struct_optimised_pragma(benchmark::State& state)
     }
   }
 }
+BENCHMARK(struct_optimised_pragma);
+BENCHMARK(struct_optimised_pragma);
 BENCHMARK(struct_optimised_pragma);
 
 

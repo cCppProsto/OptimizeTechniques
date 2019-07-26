@@ -47,7 +47,7 @@ static void recursion(benchmark::State& state)
 {
   for (auto _ : state)
   {
-    f_a(1000);
+    f_a(10000);
   }
 }
 BENCHMARK(recursion);
@@ -59,7 +59,7 @@ static void tail_recursion(benchmark::State& state)
 {
   for (auto _ : state)
   {
-    f_b(1000);
+    f_b(10000);
   }
 }
 BENCHMARK(tail_recursion);
