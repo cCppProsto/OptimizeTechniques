@@ -5,6 +5,9 @@ TEMPLATE = subdirs
 # https://godbolt.org/
 
 SUBDIRS += \
+    arguments \
+    boolean_and_or \
+    init_pod_and \
     loop_1 \
     loop_index_float \
     pod_types \

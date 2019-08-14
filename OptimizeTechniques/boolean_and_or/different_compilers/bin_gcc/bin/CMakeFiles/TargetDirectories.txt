@@ -1,0 +1,3 @@
+/home/cppprosto/dev/cCppProsto/OptimizeTechniques/OptimizeTechniques/boolean_and_or/different_compilers/bin_gcc/bin/CMakeFiles/rebuild_cache.dir
+/home/cppprosto/dev/cCppProsto/OptimizeTechniques/OptimizeTechniques/boolean_and_or/different_compilers/bin_gcc/bin/CMakeFiles/gcc_test.dir
+/home/cppprosto/dev/cCppProsto/OptimizeTechniques/OptimizeTechniques/boolean_and_or/different_compilers/bin_gcc/bin/CMakeFiles/edit_cache.dir

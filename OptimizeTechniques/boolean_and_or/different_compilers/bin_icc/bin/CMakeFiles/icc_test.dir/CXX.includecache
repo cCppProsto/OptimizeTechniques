@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cppprosto/dev/cCppProsto/OptimizeTechniques/OptimizeTechniques/boolean_and_or/main.cpp
+iostream
+-
+benchmark/benchmark.h
+-
+
